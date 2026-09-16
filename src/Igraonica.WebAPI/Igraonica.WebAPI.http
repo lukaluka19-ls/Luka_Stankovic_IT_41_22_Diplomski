@@ -1,0 +1,6 @@
+@Igraonica.WebAPI_HostAddress = http://localhost:5197
+
+GET {{Igraonica.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

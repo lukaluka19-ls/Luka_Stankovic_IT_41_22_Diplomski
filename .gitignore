@@ -1,0 +1,25 @@
+## .NET build output
+**/bin/
+**/obj/
+
+## Visual Studio and VS Code user files
+.vs/
+*.user
+*.suo
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+
+## Test and coverage output
+TestResults/
+coverage/
+
+## Local environment and secrets
+.env
+.env.*
+appsettings.Local.json
+
+## OS files
+.DS_Store
+Thumbs.db

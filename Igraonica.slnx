@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Igraonica.Application/Igraonica.Application.csproj" />
+    <Project Path="src/Igraonica.Domain/Igraonica.Domain.csproj" />
+    <Project Path="src/Igraonica.Infrastructure/Igraonica.Infrastructure.csproj" />
+    <Project Path="src/Igraonica.WebAPI/Igraonica.WebAPI.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Igraonica.IntegrationTests/Igraonica.IntegrationTests.csproj" />
+    <Project Path="tests/Igraonica.UnitTests/Igraonica.UnitTests.csproj" />
+  </Folder>
+</Solution>
