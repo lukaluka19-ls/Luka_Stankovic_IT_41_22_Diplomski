@@ -1,0 +1,27 @@
+# .NET
+bin/
+obj/
+*.user
+.vs/
+
+# Node / Vite
+node_modules/
+dist/
+igraonica-web/dist/
+
+# Playwright / screenshots dump used only to build the thesis document
+screenshots/
+igraonica-web/screenshot.mjs
+igraonica-web/screenshot-api.mjs
+
+# Secrets
+appsettings.Production.json
+.env
+*.env.local
+
+# OS / editor
+.DS_Store
+*.swp
+
+# Generated OpenAPI snapshot (regenerate via `dotnet run` + fetch /openapi/v1.json)
+openapi.json

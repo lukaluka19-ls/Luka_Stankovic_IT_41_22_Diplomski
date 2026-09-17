@@ -1,0 +1,56 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: igraonica
+      POSTGRES_USER: igraonica_user
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U igraonica_user -d igraonica"]
+      interval: 10s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: src/Igraonica.WebAPI/Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ConnectionStrings__Default: "Host=db;Database=igraonica;Username=igraonica_user;Password=${DB_PASSWORD}"
+      Jwt__Key: ${JWT_KEY}
+      BusinessRules__WeekdayCapacity: 1
+      BusinessRules__WeekendCapacity: 3
+      BusinessRules__ConfirmationDeadlineDays: 5
+      BusinessRules__CancellationNoticeDays: 15
+      Email__Host: ${EMAIL_HOST:-mail}
+      Email__Port: ${EMAIL_PORT:-1025}
+      Email__Username: ${EMAIL_USERNAME:-}
+      Email__Password: ${EMAIL_PASSWORD:-}
+      Email__UseSsl: ${EMAIL_USE_SSL:-false}
+      Email__FromAddress: igraonicajoyland@gmail.com
+      Email__FromName: JoyLand Igraonica
+      Cors__AllowedOrigins__0: http://localhost:3000
+    ports:
+      - "5000:8080"
+
+  web:
+    build: ./igraonica-web
+    depends_on:
+      - api
+    ports:
+      - "3000:80"
+
+  mail:
+    image: axllent/mailpit
+    profiles: ["dev"]
+    ports:
+      - "8025:8025" # veb interfejs za pregled poslatih poruka
+      - "1025:1025" # SMTP
+
+volumes:
+  pgdata:

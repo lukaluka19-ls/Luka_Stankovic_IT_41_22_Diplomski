@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+/* Paleta izvedena iz zvanicnog loga (logo final (1).svg): tamno teget
+   pozadina grba, neon zelena traka, ljubicasti stapovi za bilijar,
+   tirkizni dzojstik. */
+@theme {
+  --font-sans: "Nunito", system-ui, "Segoe UI", Roboto, sans-serif;
+
+  --color-bg: #f4f5fb;
+  --color-surface: #ffffff;
+  --color-border: #e1e3f0;
+
+  --color-ink: #131629;
+  --color-ink-soft: #676c93;
+
+  --color-navy: #0c1024;
+  --color-navy-light: #1b2145;
+
+  --color-purple: #7d50c5;
+  --color-purple-dark: #623bad;
+  --color-purple-light: #efe7fb;
+
+  --color-green: #3fbf22;
+  --color-green-dark: #2c8f18;
+  --color-green-light: #e4f9de;
+
+  --color-cyan: #32d0d9;
+  --color-cyan-dark: #1c9da5;
+  --color-cyan-light: #e2f9fa;
+
+  --color-danger: #e0577c;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-purple-light);
+  color: var(--color-ink);
+}
